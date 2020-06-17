@@ -5,7 +5,7 @@ import App from '../../App';
 import { connect } from 'react-redux';
 import {  getResumeHeading, postHeading } from '../Redux/actions/resumeActions';
 
-class Heading extends Component{
+class Projects extends Component{
     state = {
         formDate: {
           name:"",
@@ -45,47 +45,16 @@ class Heading extends Component{
             linkedIn: formDate.linkedIn,
             introduction:formDate.introduction
          }
-          this.updateDetails(data)
+         this.props.postHeading(data)
+          // this.updateDetails(data)
       };
       render() {
-        console.log('-----in heading update ----')
-        console.log(this.props.heading)
         var heading=this.props.heading;
         return (
               <ScrollView style={{ flex: 1, paddingTop: 3,backgroundColor:"#ffffff" }}> 
-                  <View style={{ backgroundColor: "#8cbbf1" }}> 
-                    <Text style={{ textAlign: "center",fontSize:30, fontWeight: "bold" ,color:'#fff'}}> About Me</Text> 
-                  </View>
-                  <View style={{ flex: 1, alignItems: "center" }}>
-                     <Image 
-                      style={{ width: 100, height: 190 }} 
-                      source={{ uri: "https://img.icons8.com/plasticine/2x/user.png" }} 
-                      /> 
-                  </View> 
-                  <View style={{ padding: 4 }}> 
-                    <Text style={{color:""}}>My Information </Text>
-                  <View style={styles.textInputView}> 
-                    <TextInput value="name" style={styles.TextInput} /> 
-                  </View> 
-                  <View style={styles.textInputView}>
-                    <TextInput value="Mobile" style={styles.TextInput} /> 
-                  </View> 
-                  <View style={styles.textInputView}> 
-                    <TextInput value="Email" style={styles.TextInput} /> 
-                  </View> 
-                  <View style={styles.textInputView}> 
-                    <TextInput value="Mobile" multiline style={styles.TextInput} /> 
-                  </View> 
-                </View>
-                <View style={styles.updateButtonView}>
-                <TouchableOpacity
-                 style={styles.updateButton}
-                >
-                  <Text style={{fontSize:30,textAlign:'center',color:'white'}}> update </Text>
-                </TouchableOpacity>
-                </View>
+                <Text> Education</Text>
               </ScrollView>
-        );
+              );
       }
 }
 const styles=StyleSheet.create({
@@ -123,4 +92,4 @@ const mapDispatchToProps = dispatch => ({
   getResumeHeading:(token)=>dispatch(getResumeHeading(token))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Heading);
+export default connect(mapStateToProps, mapDispatchToProps)(Projects);

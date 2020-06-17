@@ -12,6 +12,7 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { connect } from 'react-redux';
 import SignInScreen from './src/authScreens/SignInScreen';
@@ -59,8 +60,28 @@ const Tab=createBottomTabNavigator();
        </Stack.Navigator>
       ):(
           <Tab.Navigator>
-          <Tab.Screen name="My Resume" component={ResumeStack}></Tab.Screen>
-          <Tab.Screen name="Settings" component={SettingsScreen}></Tab.Screen>
+          <Tab.Screen name="Home" component={ResumeStack}
+          options={{
+            title: 'Home',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              // textAlign:'center'
+            },
+            tabBarIcon:()=>(       <Icon name="home" size={25}  color="#5DADE2" />)
+          }}
+  
+          ></Tab.Screen>
+          <Tab.Screen name="Settings" component={SettingsScreen}
+          options={{
+            title: 'Settings',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              // textAlign:'center'
+            },
+            tabBarIcon:()=>(       <Icon name="cog" size={25}  color="#5DADE2" />)
+          }}
+          
+          ></Tab.Screen>
         </Tab.Navigator>
       )}
     </NavigationContainer>

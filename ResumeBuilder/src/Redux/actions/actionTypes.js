@@ -7,3 +7,7 @@ export const POST_SIGNUP = 'POST_SIGNUP';
 
 export const GET_HEADING ="GET_HEADING";
 export const SET_HEADING ="SET_HEADING";
+
+
+export const GET_EDUCATION="GET_EDUCATION"
+export const SET_EDUCATION="SET_EDUCATION"
