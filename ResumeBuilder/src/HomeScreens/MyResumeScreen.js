@@ -12,11 +12,16 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import MainButton from './components/mainScreenButton';
 import { removeUserToken } from '../Redux/actions/actions';
+import {getResumeHeading} from '../Redux/actions/resumeActions';
+import {getResumeEducation} from '../Redux/actions/educationActions';
 class MyResumeScreen extends Component{
     logout=()=>{
         this.props.removeUserToken();
     }
     onClick=(screen)=>{
+        var token=this.props.token.token;
+        this.props.getResumeHeading(token)
+        this.props.getResumeEducation(token)
         this.props.navigation.navigate(screen)
         console.log(screen)
     }
@@ -83,7 +88,9 @@ const mapStateToProps = state => ({
   
   
   const mapDispatchToProps = dispatch => ({
+    getResumeHeading:(data)=>dispatch(getResumeHeading(data)),
     removeUserToken: () => dispatch(removeUserToken()),
+    getResumeEducation:(data)=>dispatch(getResumeEducation(data))
     // setUserToken:(token)=>dispatch(setUserToken(token))
   });
 const  styles=StyleSheet.create({

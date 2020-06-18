@@ -19,14 +19,6 @@ class Heading extends Component{
         formDate[name] = text;
         this.setState({ formDate: formDate});
       };
-      
-    componentWillMount(){
-      console.log('----component will mount ----')
-      // this.props.loading(true)
-      console.log(this.props.heading)
-      // this.props.getResumeHeading(this.props.token.token);
-      // this.props.loading(false);
-    }
       submit = () => {
         var formDate = this.state.formDate;
         console.log(formDate)

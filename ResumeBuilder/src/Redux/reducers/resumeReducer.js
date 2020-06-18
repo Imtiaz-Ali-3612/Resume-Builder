@@ -3,16 +3,18 @@ import { GET_HEADING,SET_HEADING, LOADING, ERROR} from '../actions/actionTypes';
 
 const resumeReducer = (state = {
     heading:{},
-    loading: true,
+    loading: false,
     error: null,
 }, action) => {
     switch (action.type) {
         case GET_HEADING:
             return { ...state,heading:action.data };
         case SET_HEADING:
-            return { ...state, heading: action.data };
+            return { ...state, heading: action.data,loading:false };
         case LOADING:
-            return { ...state, loading: action.data };
+            console.log('=state loading=>',state.loading)
+            console.log('====>',action.data)
+            return { ...state, loading: true};
         case ERROR:
             return { ...state, error: action.data };
         default:

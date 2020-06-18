@@ -10,7 +10,9 @@ class AddEducation extends Component{
         formDate: {
             school:"",
             grade:"",
-            title:""
+            title:"",
+            from:'',
+            to:''
         },
         message: ""
       };
@@ -27,12 +29,15 @@ class AddEducation extends Component{
             token:this.props.token.token,
             school:formDate.school,
             grade:formDate.grade,
-            title:formDate.title
+            title:formDate.title,
+            from:formDate.from,
+            to:formDate.to
     
          }
          console.log(data)
          console.log('------here-----')
          this.props.postEducation(data)
+    
          this.props.closeModal();
           // this.updateDetails(data)
       };
@@ -74,6 +79,20 @@ class AddEducation extends Component{
                       onChangeText={(value)=>this.onChangeText("grade",value)}
                       style={styles.TextInput} /> 
                   </View> 
+                  <View style={styles.textInputView}> 
+                    <TextInput 
+                      placeholder="Starting Year"
+                      onChangeText={(value)=>this.onChangeText("from",value)}
+                      style={styles.TextInput} /> 
+                  </View> 
+                  <View style={styles.textInputView}> 
+                    <TextInput 
+                      placeholder="Ending Year"
+                      onChangeText={(value)=>this.onChangeText("to",value)}
+                      style={styles.TextInput} /> 
+                  </View> 
+
+
                 </View>
                 <View style={styles.updateButtonView}>
                 <TouchableOpacity

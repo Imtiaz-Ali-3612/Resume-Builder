@@ -29,7 +29,7 @@ const Tab=createBottomTabNavigator();
  class App extends Component {
    render(){
     if (this.props.token.loading) {
-      console.log(this.props);
+      // console.log(this.props);
       this.props.getUser()
       return <SplashScreen />;
     }

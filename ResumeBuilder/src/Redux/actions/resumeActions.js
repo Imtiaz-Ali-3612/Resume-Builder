@@ -1,4 +1,4 @@
-import { GET_HEADING,SET_HEADING} from './actionTypes';
+import { ERROR,LOADING,GET_HEADING,SET_HEADING} from './actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
 import server from '../../config/config'
 
@@ -43,15 +43,21 @@ export const postHeading =(data)=>dispatch=>{
         }).then(res=>res.json())
         .then(response=>{
             console.log(response)
-            dispatch(getHeading())
+            // getResumeHeading();
+            // dispatch(getHeading())
+            // dispatch(setHeading())
+            // dispatch(loading(false))
         }).catch(err=>{
+            
             dispatch(error);
+            dispatch(loading(false))
         });
 }
 
 export const getResumeHeading =(data)=>dispatch=>{
     console.log('---in get Resume --')
     console.log(data)
+    // dispatch(loading(true))
     fetch(server.backend+'resume/userinfo',{
         method: 'GET',
         headers: {
@@ -65,10 +71,14 @@ export const getResumeHeading =(data)=>dispatch=>{
         console.log('---response')
         console.log(json)
         dispatch(setHeading(json.user));
+        // dispatch(loading(false))
+        // dispatch(loading(false))
         // dispatch(getHeading())
 
     })
-    .catch((error) => {
-      console.error(error);
+    .catch((err) => {
+        dispatch(error(err.message))
+        // dispatch(loading(false))
+      console.error(err);
     });
 }

@@ -25,7 +25,7 @@ export const error = error => ({
 
 
 export const postEducation =(data)=>dispatch=>{
-    console.log('---------post Heading ---------')
+    console.log('---------post education ---------')
         fetch(server.backend+'resume/educationinfo/', {
             method: 'POST',
             headers: {
@@ -36,13 +36,16 @@ export const postEducation =(data)=>dispatch=>{
         body: JSON.stringify({
             school:data.school,
             grade:data.grade,
-            title:data.title
+            title:data.title,
+            from:data.from,
+            to:data.to
+
 
         })
         }).then(res=>res.json())
         .then(response=>{
             console.log(response)
-            dispatch(getEducation())
+            // dispatch(getResumeEducation())
         }).catch(err=>{
             dispatch(error);
         });
@@ -64,6 +67,30 @@ export const getResumeEducation =(data)=>dispatch=>{
         console.log('---response')
         console.log(json.education)
         dispatch(setEducation(json.education));
+        // dispatch(getHeading())
+
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+export const deleteEducationInfo =(data)=>dispatch=>{
+    console.log('---in get delete education info --')
+    console.log(data)
+    fetch(server.backend+'resume/educationinfo/delete/'+data.id,{
+        method: 'GET',
+        headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        token:data.token
+        }
+    })
+    .then((response) => response.json())
+    .then((json) => {
+        console.log('---response')
+        // console.log(json.education)
+
+        // dispatch(setEducation(json.education));
         // dispatch(getHeading())
 
     })
