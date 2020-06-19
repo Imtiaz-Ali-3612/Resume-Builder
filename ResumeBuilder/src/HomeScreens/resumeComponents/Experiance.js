@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 
-class Education extends Component {
+class Experiance extends Component {
   render() {
-    console.log('---in education section---')
+    console.log('---in experiance section---')
     console.log(this.props)
-    var {school,title,to,from,grade}=this.props.education;
+    var {job_title,from,to,details}=this.props.experiance;
     return (
       <View
         style={{
@@ -15,18 +15,17 @@ class Education extends Component {
         }}
       >
         <View style={{ flex: 1, flexDirection: "row" }}>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>{school}</Text>
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>{job_title}</Text>
         </View>
         <View style={{ flexDirection: "row-reverse", flex: 1 }}>
           <View>
             
-            <Text>{title}</Text>
             <Text>{from} - {to}</Text>
-            <Text>{grade}</Text>
+            <Text>{details}</Text>
           </View>
         </View>
       </View>
     );
   }
 }
-export default Education;
+export default Experiance;

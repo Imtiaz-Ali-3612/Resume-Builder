@@ -29,7 +29,7 @@ class Education extends Component{
       };
       
     deleteEducation=(data)=>{
-      this.props.deleteEducationInfo(data)
+      this.props.deleteEducationInfo({token:this.props.token.token,id:data.id})
       this.props.navigation.navigate('Home')
                     
     }
@@ -44,7 +44,6 @@ class Education extends Component{
           console.log(this.props)
           if(this.props.education.loading){
               this.props.getResumeEducation(this.props.token.token);
-              
               return(
                 <View>
                     <ActivityIndicator></ActivityIndicator>

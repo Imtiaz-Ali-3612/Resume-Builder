@@ -3,14 +3,22 @@ import { Button, Image, StyleSheet, Text, View } from "react-native";
 
 import Education from "./Education";
 import Section from './Section';
-class Introduction extends Component {
+class EducationSection extends Component {
   render() {
+    console.log('---in education section====')
+    console.log(this.props)
     return (
         <Section title="Education">
-          <Education />
-          <Education />
+          {
+            this.props.education.map((edu)=>{
+              return(
+              <Education education={edu}/>
+              )
+            })
+          }
+          {/* <Education /> */}
         </Section>
     );
   }
 }
-export default Introduction;
+export default EducationSection;

@@ -1,25 +1,24 @@
-import React,{Component} from 'react'
+import React from 'react'
 
-import { TextInput,Modal,TouchableOpacity,ActivityIndicator,Image,View,Text,StyleSheet,ScrollView} from 'react-native'
+import { TouchableOpacity,View,Text,StyleSheet} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 
-const EducationSection=(props)=>{
+const ProjectSection=(props)=>{
     console.log(props)
     return(
         <View style={styles.box}>
             <View style={{paddingLeft:20}}>
-                <Text style={{fontSize:40,fontWeight:'bold'}}> {props.education.school} </Text>
+                <Text style={{fontSize:40,fontWeight:'bold'}}> {props.project.title} </Text>
                 <View style={{paddingLeft:10}}>
-                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.education.from} - {props.education.to}</Text>
-                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.education.title}</Text>
-                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.education.grade}</Text>
+                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.project.description}</Text>
                 </View>
             </View>
         <View style={{flexDirection:'row-reverse',padding:10}}>
             <TouchableOpacity 
+            
                 onPress={()=>{
-                    props.deleteEducation({id:props.education.education_id})  
+                    props.deleteProject({id:props.project.project_id})  
                 }}
             >
                 <Icon name="trash-alt" size={30} color="red"></Icon>
@@ -28,7 +27,8 @@ const EducationSection=(props)=>{
     </View>
     )
 }
-export default EducationSection;
+
+export default ProjectSection;
 const styles=StyleSheet.create({
     box:{
         // borderWidth:2,

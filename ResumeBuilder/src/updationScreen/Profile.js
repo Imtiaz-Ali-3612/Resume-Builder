@@ -19,17 +19,25 @@ class Heading extends Component{
         formDate[name] = text;
         this.setState({ formDate: formDate});
       };
-      
-    componentWillMount(){
-      console.log('----component will mount ----')
-      // this.props.loading(true)
-      console.log(this.props.heading)
-      // this.props.getResumeHeading(this.props.token.token);
-      // this.props.loading(false);
-    }
       submit = () => {
         var formDate = this.state.formDate;
+        var previousValues=this.props.heading.heading;
         console.log(formDate)
+        if(formDate.introduction.length==0){
+          formDate.introduction=previousValues.introduction;
+        }
+        if(formDate.name.length==0){
+          formDate.name=previousValues.name;
+        }
+        if(formDate.mobile.length==0){
+          formDate.mobile=previousValues.mobile;
+        }
+        if(formDate.linkedIn.length==0){
+          formDate.linkedIn=previousValues.linkedIn;
+        }
+        
+        
+        
         var data={       
             token:this.props.token.token,
             name:formDate.name,
@@ -44,7 +52,7 @@ class Heading extends Component{
           // this.updateDetails(data)
       };
       render() {
-
+        
         console.log('-----in heading update ----')
         console.log(this.props.heading)
         var heading=this.props.heading.heading;
@@ -90,8 +98,10 @@ class Heading extends Component{
                   <View style={styles.textInputView}> 
                     <TextInput
                       placeholderTextColor="black"
-                      placeholder={ heading.name.length!=0 ? (heading.name):"Enter Your name"}
-                    onChangeText={(value)=>this.onChangeText("name",value)}  
+                      // placeholder={ heading.name.length!=0 ? (heading.name):"Enter Your name"}
+                      value={this.state.formDate.name}
+                      onChangeText={(value)=>this.onChangeText("name",value)}  
+
                    style={styles.TextInput} /> 
                   </View> 
                   <View style={styles.textInputView}>

@@ -7,8 +7,9 @@ class SkillSection extends Component {
   render() {
     return (
         <Section title="Skills">
-          <Education />
-          <Education />
+          {/* <Education /> */}
+          {/* <Education /> */}
+          <Text>Skills </Text>
         </Section>
     );
   }

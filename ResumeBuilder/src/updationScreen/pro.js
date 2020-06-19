@@ -35,8 +35,13 @@ class Heading extends Component{
 
           // this.updateDetails(data)
       };
+      componentWillMount=()=>{
+        this.setState({formDate:this.props.heading.heading})
+        console.log('===============profile========')
+        console.log(this.state.formDate)
+      }
       render() {
-
+        
         console.log('-----in heading update ----')
         console.log(this.props.heading)
         var heading=this.props.heading.heading;
@@ -82,15 +87,19 @@ class Heading extends Component{
                   <View style={styles.textInputView}> 
                     <TextInput
                       placeholderTextColor="black"
-                      placeholder={ heading.name.length!=0 ? (heading.name):"Enter Your name"}
-                    onChangeText={(value)=>this.onChangeText("name",value)}  
+                      // placeholder={ heading.name.length!=0 ? (heading.name):"Enter Your name"}
+                      value={this.state.formDate.name}
+                      onChangeText={(value)=>this.onChangeText("name",value)}  
+
                    style={styles.TextInput} /> 
                   </View> 
                   <View style={styles.textInputView}>
                     <TextInput
                       placeholderTextColor="black"
-                      placeholder={ heading.mobile.length!=0 ? (heading.mobile):"Enter Your mobile"}
-                    onChangeText={(value)=>this.onChangeText("mobile",value)} 
+                      // placeholder={ heading.mobile.length!=0 ? (heading.mobile):"Enter Your mobile"}
+                      value={this.state.formDate.mobile}
+                      placeholder={'Enter your mobile'}
+                      onChangeText={(value)=>this.onChangeText("mobile",value)} 
                       style={styles.TextInput} /> 
                   </View> 
                   <View style={styles.textInputView}> 
@@ -99,14 +108,20 @@ class Heading extends Component{
                   <View style={styles.textInputView}> 
                     <TextInput 
                       placeholderTextColor="black"
-                      placeholder={ heading.linkedIn.length!=0 ? (heading.linkedIn):"Enter URL of linked account"}
+
+                      value={this.state.formDate.linkedIn}
+                      placeholder={"Enter your LinkedIn"}
+                      // placeholder={ heading.linkedIn.length!=0 ? (heading.linkedIn):"Enter URL of linked account"}
                       onChangeText={(value)=>this.onChangeText("linkedIn",value)} 
                      multiline style={styles.TextInput} /> 
                   </View> 
                   <View style={styles.textInputView}> 
                     <TextInput 
                       placeholderTextColor="black"
-                      placeholder={ heading.introduction.length!=0 ? (heading.introduction):"Introduce yourself"}
+                      value={this.state.formDate.introduction}
+                      placeholder={" Write your objective "}
+                      numberOfLines={4}
+                      // placeholder={ heading.introduction.length!=0 ? (heading.introduction):"Introduce yourself"}
                       onChangeText={(value)=>this.onChangeText("introduction",value)} 
                      multiline style={styles.TextInput} /> 
                   </View> 

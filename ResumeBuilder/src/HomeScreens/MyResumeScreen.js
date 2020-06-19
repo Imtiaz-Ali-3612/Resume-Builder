@@ -14,14 +14,38 @@ import MainButton from './components/mainScreenButton';
 import { removeUserToken } from '../Redux/actions/actions';
 import {getResumeHeading} from '../Redux/actions/resumeActions';
 import {getResumeEducation} from '../Redux/actions/educationActions';
+import { getResumeExperiance } from '../Redux/actions/experianceActions';
+import { getResumeProject } from '../Redux/actions/projectActions';
+
+
 class MyResumeScreen extends Component{
     logout=()=>{
         this.props.removeUserToken();
     }
     onClick=(screen)=>{
         var token=this.props.token.token;
-        this.props.getResumeHeading(token)
-        this.props.getResumeEducation(token)
+        // Profile 
+        switch(screen){
+            case "Profile":
+                 this.props.getResumeHeading(token)
+                 break;
+            case "Experiance":
+                this.props.getResumeExperiance(token)
+                break;
+            case "Projects":
+                this.props.getResumeProject(token)
+                break;
+            case "Education":
+                this.props.getResumeEducation(token)
+                break;
+            case "GenerateResume":
+                this.props.getResumeHeading(token)
+                this.props.getResumeExperiance(token)
+                this.props.getResumeProject(token)
+                this.props.getResumeEducation(token)
+                break;
+        }
+
         this.props.navigation.navigate(screen)
         console.log(screen)
     }
@@ -90,8 +114,10 @@ const mapStateToProps = state => ({
   const mapDispatchToProps = dispatch => ({
     getResumeHeading:(data)=>dispatch(getResumeHeading(data)),
     removeUserToken: () => dispatch(removeUserToken()),
-    getResumeEducation:(data)=>dispatch(getResumeEducation(data))
-    // setUserToken:(token)=>dispatch(setUserToken(token))
+    getResumeExperiance: (data)=>dispatch(getResumeExperiance(data)),
+    getResumeEducation:(data)=>dispatch(getResumeEducation(data)),
+    getResumeProject:(data)=>dispatch(getResumeProject(data))
+    
   });
 const  styles=StyleSheet.create({
     button:{

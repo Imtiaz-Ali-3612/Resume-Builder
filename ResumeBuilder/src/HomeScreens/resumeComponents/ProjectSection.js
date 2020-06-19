@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 
-import Experiance from "./Experiance";
+import Project from "./Project";
 import Section from "./Section";
 
-class ExperianceSection extends Component {
+class ProjectSection extends Component {
   render() {
     return (
-      <Section title="Experiances">
+      <Section title="Projects">
         {/* <Education /> */}
         {/* <Education /> */}
         {
-            this.props.experiance.map((exp)=>{
+            this.props.project.map((proj)=>{
               return(
-              <Experiance experiance={exp}/>
+              <Project project={proj}/>
               )
             })
           }
@@ -22,4 +22,4 @@ class ExperianceSection extends Component {
     );
   }
 }
-export default ExperianceSection;
+export default ProjectSection;

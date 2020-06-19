@@ -4,22 +4,22 @@ import { TextInput,Modal,TouchableOpacity,ActivityIndicator,Image,View,Text,Styl
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 
-const EducationSection=(props)=>{
+const ExperianceSection=(props)=>{
     console.log(props)
     return(
         <View style={styles.box}>
             <View style={{paddingLeft:20}}>
-                <Text style={{fontSize:40,fontWeight:'bold'}}> {props.education.school} </Text>
+                <Text style={{fontSize:40,fontWeight:'bold'}}> {props.experiance.job_title} </Text>
                 <View style={{paddingLeft:10}}>
-                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.education.from} - {props.education.to}</Text>
-                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.education.title}</Text>
-                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.education.grade}</Text>
+                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.experiance.from} - {props.experiance.to}</Text>
+                    <Text style={{fontSize:20,fontStyle:'italic'}}>{props.experiance.details}</Text>
                 </View>
             </View>
         <View style={{flexDirection:'row-reverse',padding:10}}>
             <TouchableOpacity 
+            
                 onPress={()=>{
-                    props.deleteEducation({id:props.education.education_id})  
+                    props.deleteExperiance({id:props.experiance.experiance_id})  
                 }}
             >
                 <Icon name="trash-alt" size={30} color="red"></Icon>
@@ -28,7 +28,8 @@ const EducationSection=(props)=>{
     </View>
     )
 }
-export default EducationSection;
+
+export default ExperianceSection;
 const styles=StyleSheet.create({
     box:{
         // borderWidth:2,

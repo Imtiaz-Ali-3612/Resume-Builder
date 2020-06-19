@@ -5,6 +5,7 @@ import Profile from '../updationScreen/Profile';
 import Experiance from '../updationScreen/Experiance';
 import Education from '../updationScreen/Education';
 import Projects from '../updationScreen/Projects';
+import GenerateResume from '../HomeScreens/GenerateResume'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 // Icon=()=>(       <Icon name="home" size={25}  color="#5DADE2" />)
 
@@ -50,6 +51,12 @@ const Drawer=createDrawerNavigator();
               drawerIcon:()=>(       <Icon name="file-code" size={25}  color="#5DADE2" />)
             }}  
             name="Projects" component={Projects}></Drawer.Screen>
+          <Drawer.Screen 
+             options={{
+              title: 'Generate Resume',
+              drawerIcon:()=>(       <Icon name="file-code" size={25}  color="#5DADE2" />)
+            }}  
+            name="GenerateResume" component={GenerateResume}></Drawer.Screen>
          
         </Drawer.Navigator>
       )
