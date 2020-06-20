@@ -5,6 +5,8 @@ import ResumeReducer from './reducers/resumeReducer';
 import EducationReducer from './reducers/educationReducer';
 import ExperianceReducer from './reducers/experianceReducer';
 import ProjectReducer from './reducers/projectReducer';
+import ResumeOrderReducer from './reducers/resumeOrderReducer';
+
 import { combineReducers } from 'redux';
 
 var allReducers=combineReducers({
@@ -12,7 +14,8 @@ var allReducers=combineReducers({
     token: rootReducer,
     education:EducationReducer,
     experiance:ExperianceReducer,
-    project:ProjectReducer
+    project:ProjectReducer,
+    order:ResumeOrderReducer
 });
 
 const middlewares = [ReduxThunk];
