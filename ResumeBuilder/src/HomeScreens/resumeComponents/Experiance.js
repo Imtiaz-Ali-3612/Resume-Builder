@@ -11,17 +11,20 @@ class Experiance extends Component {
         style={{
           padding: 5,
           flex: 1,
-          flexDirection: "row"
+          flexDirection: "row",
+          marginBottom:5
         }}
       >
-        <View style={{ flex: 1, flexDirection: "row" }}>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>{job_title}</Text>
+        <View style={{ flex: 1, flexDirection: "column" }}>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{job_title}</Text>
+          <Text style={{fontStyle:"italic"}}>{from} - {to}</Text>
+
         </View>
         <View style={{ flexDirection: "row-reverse", flex: 1 }}>
-          <View>
+          <View style={{justifyContent:"flex-end"}}>
             
-            <Text>{from} - {to}</Text>
-            <Text>{details}</Text>
+          <Text>{details}</Text>
+
           </View>
         </View>
       </View>

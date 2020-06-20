@@ -15,7 +15,7 @@ class Project extends Component {
         }}
       >
         <View style={{ flex: 1, flexDirection: "row" }}>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>{title}</Text>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{title}</Text>
         </View>
         <View style={{ flexDirection: "row-reverse", flex: 1 }}>
           <View>

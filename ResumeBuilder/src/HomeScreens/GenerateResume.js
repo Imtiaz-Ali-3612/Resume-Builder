@@ -21,6 +21,14 @@ import { getResumeProject} from '../Redux/actions/projectActions';
 import {getResumeHeading } from '../Redux/actions/resumeActions';
 
 class GenerateResume extends Component {
+
+   state={
+     order:
+     {
+       section:["EducationSection","IntroductionSection","ExperianceSection","ProjectSection"]
+     }
+   }
+
   check=()=>{
       console.log('================check==================')
     var {heading,education,experiance,project}=this.props;
@@ -31,6 +39,38 @@ class GenerateResume extends Component {
         return false;
     }
   }
+  checkSection=(Section)=>{
+      var {heading,education,experiance,project,token}=this.props;
+     
+        switch(Section){
+          case "Heading":
+            return(
+              <Section heading={heading.heading}></Section>
+            )
+            break;
+          case "IntroductionSection":
+            return(
+              <IntroductionSection introduction={heading.heading.introduction}></IntroductionSection>
+            )
+            break;
+          case "EducationSection":
+            return(
+              <EducationSection education={education.education}></EducationSection>
+            )
+            break;
+          case "ExperianceSection":
+            return(
+              <ExperianceSection experiance={experiance.experiance}></ExperianceSection>
+            )
+            break;
+          case "ProjectSection":
+            return(
+              <ProjectSection project={project.project}></ProjectSection>
+            )
+            break;
+        }
+  }
+
   render() {
       console.log(this.props)
       var {heading,education,experiance,project,token}=this.props;
@@ -71,36 +111,36 @@ class GenerateResume extends Component {
           
           this.props.getResumeEducation(token) 
           return (
-            <ActivityIndicator>
+            <ActivityIndicator size={"large"}>
 
             </ActivityIndicator>
           )
         }:
-    // return(
-    //   <View>
-    //       <ActivityIndicator></ActivityIndicator>
-    //   </View>
-    // )
-
-    // }else{
-    
-    // return (
-    //    this.check() ? 
-    //     (
-    //       <View>
-    //         <ActivityIndicator></ActivityIndicator>
-    //       </View>
-    //       ):(
             
         
+        <View style={{borderWidth:1,padding:20}}>
+
       <ScrollView>
         <Heading heading={heading.heading} />
+        {
+          this.state.order.section.map((Section)=>{
+            //  var params=
+            console.log(Section)
+            return (
+
+              this.checkSection(Section)
+              // <Section></Section>
+            )
+          })
+        }
+        {/* <Heading heading={heading.heading} />
         <IntroductionSection introduction={heading.heading.introduction}/>
         <EducationSection  education={education.education}/>
         <ExperianceSection experiance={experiance.experiance}/>
-        <ProjectSection project={project.project}></ProjectSection>
+        <ProjectSection project={project.project}></ProjectSection> */}
         {/* <SkillSection  /> */}
       </ScrollView>
+</View>
     // )
     );
   }
@@ -116,7 +156,7 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-//   postEducation: (data) => dispatch(postEducation(data)),
+  //   postEducation: (data) => dispatch(postEducation(data)),
   getResumeEducation:(data)=>dispatch(getResumeEducation(data)),
   getResumeExperiance:(data)=>dispatch(getResumeExperiance(data)),
   getResumeProject:(data)=>dispatch(getResumeProject(data)),

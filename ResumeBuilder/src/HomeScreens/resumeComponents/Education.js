@@ -11,13 +11,13 @@ class Education extends Component {
         style={{
           padding: 5,
           flex: 1,
-          flexDirection: "row"
+          // flexDirection: "row"
         }}
       >
         <View style={{ flex: 1, flexDirection: "row" }}>
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>{school}</Text>
         </View>
-        <View style={{ flexDirection: "row-reverse", flex: 1 }}>
+        <View  >
           <View>
             
             <Text>{title}</Text>

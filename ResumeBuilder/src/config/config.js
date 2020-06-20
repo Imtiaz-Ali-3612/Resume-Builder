@@ -1,1 +1,1 @@
-exports.backend= "https://60c18275a794.ngrok.io/";
+exports.backend= "https://resume-builder-app-1.herokuapp.com/";

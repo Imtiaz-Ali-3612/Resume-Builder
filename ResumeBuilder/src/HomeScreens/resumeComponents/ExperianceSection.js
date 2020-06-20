@@ -7,7 +7,7 @@ import Section from "./Section";
 class ExperianceSection extends Component {
   render() {
     return (
-      <Section title="Experiances">
+      <Section title="Experiences">
         {/* <Education /> */}
         {/* <Education /> */}
         {

@@ -5,20 +5,21 @@ import Education from "./Education";
 class Section extends Component {
   render() {
     return (
-      <View style={{ borderBottomWidth: 0.5 }}>
-        <View style={{ paddingTop: 5, borderBottomWidth: 1 }}>
+      <View >
+        <View style={{ paddingTop: 5 , paddingBottom:5 }}>
           <Text
             style={{
               // borderWidth: 1,
-              borderTopWidth: 1,
-              borderRightWidth: 1,
-              borderLeftWidth: 1,
+              backgroundColor:"#41A950",
+              color:"white",
               borderRadius: 5,
-              width: "30%",
               paddingLeft:10,
               fontSize: 20,
               // textAlign: "center",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              textAlign:"center",
+              letterSpacing:2,
+              padding:5
             }}
           >
             {this.props.title}
