@@ -16,4 +16,6 @@
  Database is deployed and is limited to 5 MB needed to be tested accordingly.
 
  
+ # App Screens 
  
+ https://github.com/Imtiaz-Ali-3612/resumeBuilder/blob/master/ResumeBuilder/app%20screens/splash.png?raw=true
