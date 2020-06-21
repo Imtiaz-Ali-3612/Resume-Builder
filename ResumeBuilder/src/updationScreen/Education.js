@@ -73,7 +73,9 @@ class Education extends Component{
                         {
                             this.props.education.education.map((education)=>{
                                 return (
-                                    <EducationSection education={education} 
+                                    <EducationSection
+                                      key={education.education_id}
+                                      education={education} 
                                                       deleteEducation={(data)=>this.deleteEducation(data)}
                                     ></EducationSection> 
                                  )
