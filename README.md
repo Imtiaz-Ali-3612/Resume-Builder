@@ -1,5 +1,5 @@
 # resumeBuilder
- React native mobile application which helps the user to build their CV or resume Mobile
+ React Native & Redux mobile application which helps the user to build their CV or resume Mobile online.
  
  Front End : React Native
  
