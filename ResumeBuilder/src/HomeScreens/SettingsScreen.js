@@ -1,17 +1,13 @@
 import React,{Component} from 'react'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {View,StyleSheet,Text,TextInput,Picker} from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import {TouchableOpacity,View,StyleSheet,Text,Picker} from 'react-native'
 import {connect} from 'react-redux';
 import { setResumeOrder } from '../Redux/actions/resumeOrderActions';
 
-// import Section from './resumeComponents/Section'
 
 Section =(props)=>{
     return(
-        
         <View style={styles.section}>
             <View style={{padding:10}}>
                 <Text style={{fontSize:20}}>{props.title}</Text>
@@ -48,22 +44,14 @@ class SettingsScreen extends Component{
             4:"Project Section"
 
         }
-        // numbers:[]
 
       }
     onChangeText=(index,value)=>{
         var order=this.state.value;
         order[index]=value;
-        // var numbers=this.state.numbers;
-        // numbers.append(value)
-        // console.log(value,text)
-        // order[text]=value;
-        // console.log(order)
         this.setState({value:order})
-        console.log(this.state.value)
     }
     onSubmit=()=>{
-        console.log(this.state.value)
         var val=this.state.value
         var data=[]
         for ( i in val){
@@ -71,8 +59,8 @@ class SettingsScreen extends Component{
         }
         
         var order={data}
-        console.log(data)
         this.props.setResumeOrder(data)
+        this.props.navigation.navigate('Home')
     }
     render(){
         return(
@@ -105,7 +93,7 @@ class SettingsScreen extends Component{
                     onPress={()=>this.onSubmit()}
                     style={{...styles.section,marginTop:10,backgroundColor:'#5DADE2'}}
                 >
-                    <Text style={{fontSize:30}}> Change </Text>
+                    <Text style={{paddingLeft:60,fontSize:30,color:'white'}}> Change </Text>
                 </TouchableOpacity>
             </View>
          </View>
@@ -121,7 +109,7 @@ const styles=StyleSheet.create({
         
     },
     section:{
-        width:'100%',
+        width:'60%',
         backgroundColor:'#ffff',
         flexDirection:'row',
         // borderWidth:1,

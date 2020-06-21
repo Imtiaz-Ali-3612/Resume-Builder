@@ -15,11 +15,11 @@ class SignInScreen extends Component{
     state = {
         formDate: {
           email: {
-            value: "a@b.cc",
+            value: "",
             isValid: true
           },
           password: {
-            value: "12345678",
+            value: "",
             isValid: true
           },
           valid: false
@@ -47,11 +47,6 @@ class SignInScreen extends Component{
         }else{
           this.setState({message:'Failed to login'})
         }
-        // this.props.navigation.navigate('SignIn');
-            // })
-            // .catch((error) => {
-            //     this.setState({ error })
-            // })
     };
 
       beforeSubmit=()=>{

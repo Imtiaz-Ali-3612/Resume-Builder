@@ -1,11 +1,10 @@
 import React,{Component} from 'react'
 
-import {View,Text,StyleSheet} from 'react-native'
+import {View,Text,StyleSheet,TouchableOpacity} from 'react-native'
 
 import isValid from "../config/validation";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { postSignup } from '../Redux/actions/actions';
 
@@ -13,15 +12,15 @@ class SignUpScreen extends Component{
     state = {
         formDate: {
           email: {
-            value: "a@b.cc",
+            value: "",
             isValid: true
           },
           password: {
-            value: "12345678",
+            value: "",
             isValid: true
           },
           confirmPassword: {
-            value: "12345678",
+            value: "",
             isValid: true
           },
           valid: false
@@ -43,11 +42,7 @@ class SignUpScreen extends Component{
         this.props.postSignup(data);
             // .then(() => {
         this.props.navigation.navigate('SignIn');
-            // })
-            // .catch((error) => {
-            //     this.setState({ error })
-            // })
-    };
+      };
       beforeSubmit=()=>{
           var form=this.state.formDate;
           return form.email.isValid && form.password.isValid && form.confirmPassword.isValid;
@@ -58,7 +53,7 @@ class SignUpScreen extends Component{
         console.log(formDate)
         if (this.beforeSubmit()) {
           console.log(formDate);
-          data={email:formDate.email.value,password:formDate.password.value}
+          var data={email:formDate.email.value,password:formDate.password.value}
           this.signUp(data)
           // this.props.navigation.navigate('My Resume');
         }
@@ -143,7 +138,7 @@ textInputStyle:{
     color:'black'
 },
 textInputView:{
-    paddingBottom:30,
+    paddingBottom:15,
     alignSelf:"center",
     width:"90%"
 },

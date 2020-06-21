@@ -46,7 +46,7 @@ class AddEducation extends Component{
         console.log(this.props.heading)
         var heading=this.props.heading;
         return (
-              <View style={{ paddingTop: 3,backgroundColor:"#ffffff" }}> 
+              <ScrollView style={{ paddingTop: 3,backgroundColor:"#ffffff" }}> 
                   <View style={{flex:1,flexDirection:'row-reverse'}}>
                         <TouchableOpacity
                           onPress={this.props.closeModal}
@@ -103,7 +103,7 @@ class AddEducation extends Component{
                 </TouchableOpacity>
                 </View>
                 </View>
-              </View>
+              </ScrollView>
               // <View>
               //   <Text>head</Text>
               // </View>

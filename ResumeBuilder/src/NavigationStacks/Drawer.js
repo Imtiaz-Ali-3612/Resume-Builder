@@ -1,15 +1,12 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
-import MyResumeScreen from '../HomeScreens/MyResumeScreen';
-import Profile from '../updationScreen/Profile';
+import MyResumeScreen from '../HomeScreens/Home';
 import Experiance from '../updationScreen/Experiance';
 import Education from '../updationScreen/Education';
 import Projects from '../updationScreen/Projects';
 import GenerateResume from '../HomeScreens/GenerateResume'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-// Icon=()=>(       <Icon name="home" size={25}  color="#5DADE2" />)
-
-import Pro from '../updationScreen/pro';
+import Profile from '../updationScreen/Profile';
 const Drawer=createDrawerNavigator();
  
   ResumeStack=()=>{
@@ -32,7 +29,7 @@ const Drawer=createDrawerNavigator();
               title: 'Profile',
               drawerIcon:()=>(       <Icon name="user" size={25}  color="#5DADE2" />)
             }}  
-            name="Profile" component={Pro}></Drawer.Screen>
+            name="Profile" component={Profile}></Drawer.Screen>
           <Drawer.Screen 
             options={{
               title: 'Education',

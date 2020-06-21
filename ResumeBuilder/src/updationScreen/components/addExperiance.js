@@ -43,7 +43,7 @@ class AddExperiance extends Component{
         // console.log(this.props.heading)
         // var heading=this.props.heading;
         return (
-              <View style={{ paddingTop: 3,backgroundColor:"#ffffff" }}> 
+              <ScrollView style={{ paddingTop: 3,backgroundColor:"#ffffff" }}> 
                   <View style={{flex:1,flexDirection:'row-reverse'}}>
                         <TouchableOpacity
                           onPress={this.props.closeModal}
@@ -79,6 +79,7 @@ class AddExperiance extends Component{
                   <View style={styles.textInputView}> 
                     <TextInput 
                       placeholder=" What was your experiance ?"
+                      numberOfLines={4}
                       multiline
                       onChangeText={(value)=>this.onChangeText("details",value)}
                       style={styles.TextInput} /> 
@@ -95,7 +96,7 @@ class AddExperiance extends Component{
                 </TouchableOpacity>
                 </View>
                 </View>
-              </View>
+              </ScrollView>
               // <View>
               //   <Text>head</Text>
               // </View>

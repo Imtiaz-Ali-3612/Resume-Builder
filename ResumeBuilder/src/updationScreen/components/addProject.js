@@ -64,6 +64,7 @@ class AddProject extends Component{
                     <TextInput
                       placeholder=" Description "
                       numberOfLines={6}
+                      multiline
                     onChangeText={(value)=>this.onChangeText("description",value)} 
                      style={styles.TextInput} /> 
                   </View> 

@@ -20,22 +20,21 @@ class Heading extends Component{
         this.setState({ formDate: formDate});
       };
       submit = () => {
+        var heading=this.props.heading.heading;
         var formDate = this.state.formDate;
-        var previousValues=this.props.heading.heading;
         console.log(formDate)
-        if(formDate.introduction.length==0){
-          formDate.introduction=previousValues.introduction;
-        }
         if(formDate.name.length==0){
-          formDate.name=previousValues.name;
+          formDate.name=heading.name;
         }
         if(formDate.mobile.length==0){
-          formDate.mobile=previousValues.mobile;
+          formDate.mobile=heading.mobile;
         }
         if(formDate.linkedIn.length==0){
-          formDate.linkedIn=previousValues.linkedIn;
+          formDate.linkedIn=heading.linkedIn;
         }
-        
+        if(formDate.introduction.length==0){
+          formDate.introduction=heading.introduction;
+        }
         
         
         var data={       
@@ -46,20 +45,32 @@ class Heading extends Component{
             introduction:formDate.introduction
          }
         //  this.props.loading(true)
+      
          this.props.postHeading(data)
          this.props.navigation.navigate('Home')
 
           // this.updateDetails(data)
       };
+      // componentWillMount=()=>{
+      //   this.setState({formDate:this.props.heading.heading})
+      //   console.log('===============profile========')
+      //   console.log(this.state.formDate)
+      // }
+      // getData=()=>{
+      //   this.props.getResumeHeading(this.props.token.token)
+      //   if(!this.props.heading.loading){
+      //     this.setState({formDate:this.props.heading.heading})
+      //   }
+      // }
+      
       render() {
         
-        console.log('-----in heading update ----')
+        console.log('-----in heading update --')
         console.log(this.props.heading)
         var heading=this.props.heading.heading;
         if(this.props.heading.loading){
             // console.log(this.[rp[s.]])
-            this.props.getResumeHeading(this.props.token.token);
-            
+            this.props.getResumeHeading(this.props.token.token)
             return(
               <View>
                   <ActivityIndicator></ActivityIndicator>
@@ -81,9 +92,10 @@ class Heading extends Component{
     
          ):(
           
-        
-              <ScrollView style={{ flex: 1, paddingTop: 3,backgroundColor:"#ffffff" }}> 
+            // <View style={{padding:20}}></View>
+              <ScrollView style={{ padding:10,flex: 1,backgroundColor:"#ffffff" }}> 
                   {console.log(this.props.heading)}
+                  <View style={{paddingBottom:40}}>
                   <View style={{ backgroundColor: "#8cbbf1" }}> 
                     <Text style={{ textAlign: "center",fontSize:30, fontWeight: "bold" ,color:'#fff'}}> About Me</Text> 
                   </View>
@@ -94,12 +106,13 @@ class Heading extends Component{
                       /> 
                   </View> 
                   <View style={{ padding: 4 }}> 
-                    <Text style={{color:""}}>My Information </Text>
+
+                    <Text style={{alignSelf:'center',fontSize:20,fontWeight:'bold'}}>My Information </Text>
                   <View style={styles.textInputView}> 
                     <TextInput
                       placeholderTextColor="black"
-                      // placeholder={ heading.name.length!=0 ? (heading.name):"Enter Your name"}
-                      value={this.state.formDate.name}
+                      placeholder={ heading.name===null ? "Enter Your name": heading.name.length!=0 ? (heading.name):"Enter Your name"}
+                      // value={this.state.formDate.name}
                       onChangeText={(value)=>this.onChangeText("name",value)}  
 
                    style={styles.TextInput} /> 
@@ -107,8 +120,10 @@ class Heading extends Component{
                   <View style={styles.textInputView}>
                     <TextInput
                       placeholderTextColor="black"
-                      placeholder={ heading.mobile.length!=0 ? (heading.mobile):"Enter Your mobile"}
-                    onChangeText={(value)=>this.onChangeText("mobile",value)} 
+                      placeholder={ heading.mobile===null ? "Enter Your Mobile": heading.mobile.length!=0 ? (heading.mobile):"Enter Your mobile"}
+                      // value={this.state.formDate.mobile}
+                      // placeholder={'Enter your mobile'}
+                      onChangeText={(value)=>this.onChangeText("mobile",value)} 
                       style={styles.TextInput} /> 
                   </View> 
                   <View style={styles.textInputView}> 
@@ -117,14 +132,20 @@ class Heading extends Component{
                   <View style={styles.textInputView}> 
                     <TextInput 
                       placeholderTextColor="black"
-                      placeholder={ heading.linkedIn.length!=0 ? (heading.linkedIn):"Enter URL of linked account"}
+
+                      // value={this.state.formDate.linkedIn}
+                      placeholder={"Enter your LinkedIn"}
+                      placeholder={heading.linkedIn===null ? "Enter Your LinkedIn" : heading.linkedIn.length!=0 ? (heading.linkedIn):"Enter URL of linked account"}
                       onChangeText={(value)=>this.onChangeText("linkedIn",value)} 
                      multiline style={styles.TextInput} /> 
                   </View> 
                   <View style={styles.textInputView}> 
                     <TextInput 
                       placeholderTextColor="black"
-                      placeholder={ heading.introduction.length!=0 ? (heading.introduction):"Introduce yourself"}
+                      // value={this.state.formDate.introduction}
+                      // placeholder={" Write your objective "}
+                      numberOfLines={4}
+                      placeholder={ heading.name===null ? "Introduce yourself": heading.introduction.length!=0 ? (heading.introduction):"Introduce yourself"}
                       onChangeText={(value)=>this.onChangeText("introduction",value)} 
                      multiline style={styles.TextInput} /> 
                   </View> 
@@ -134,8 +155,9 @@ class Heading extends Component{
                  style={styles.updateButton}
                  onPress={()=>this.submit()}
                 >
-                  <Text style={{fontSize:30,textAlign:'center',color:'white'}}> update </Text>
+                  <Text style={{fontSize:18,textAlign:'center',color:'white'}}> Update </Text>
                 </TouchableOpacity>
+                </View>
                 </View>
               </ScrollView>
               // <View>
@@ -149,23 +171,33 @@ class Heading extends Component{
 const styles=StyleSheet.create({
   tinyLogo: { width: 50, height: 50 }, 
   TextInput: { 
-    padding: 4,
+    borderRadius:10,
+
+    padding: 9,
      borderWidth: 1,
+     margin:10
     //  selectionColor: '#428AF8', 
-     borderTopLeftRadius:15,
-      borderBottomRightRadius:15, }, 
-  textInputView:{paddingTop:5},
+    //  borderTopLeftRadius:15,
+      // borderBottomRightRadius:15,
+     }, 
+  textInputView:
+  {
+    // paddingTop:5
+  },
   updateButtonView:{
-    flex:1,alignItems:'center',
-    paddingTop:20
+    flex:1,
+    alignItems:'center',
+    paddingTop:20,
+    width:"100%"
     
   },
   updateButton:{
-    borderBottomLeftRadius:20,
-    backgroundColor:'#ff4242',
-    borderTopRightRadius:20,
+    // borderBottomLeftRadius:20,
+    backgroundColor:'#41A950',
+    // borderTopRightRadius:20,
+    padding:6,
     borderWidth:1,
-    width:'60%'
+    width:'90%'
 
   }
 })
