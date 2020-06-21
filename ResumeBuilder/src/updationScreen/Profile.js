@@ -193,7 +193,7 @@ const styles=StyleSheet.create({
   },
   updateButton:{
     // borderBottomLeftRadius:20,
-    backgroundColor:'#41A950',
+    backgroundColor:'#5DADE2',
     // borderTopRightRadius:20,
     padding:6,
     borderWidth:1,

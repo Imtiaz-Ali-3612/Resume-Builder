@@ -10,7 +10,7 @@ class Section extends Component {
           <Text
             style={{
               // borderWidth: 1,
-              backgroundColor:"#41A950",
+              backgroundColor:"#5DADE2",
               color:"white",
               borderRadius: 5,
               paddingLeft:10,
