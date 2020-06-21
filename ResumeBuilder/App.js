@@ -28,6 +28,7 @@ const Tab=createBottomTabNavigator();
 
  class App extends Component {
    render(){
+     console.log('---- In app ---- ')
     if (this.props.token.loading) {
       // console.log(this.props);
       this.props.getUser()
@@ -43,16 +44,11 @@ const Tab=createBottomTabNavigator();
          options={{
           title: ' Sign In',
           headerStyle: {
-            paddingTop:10,
-            backgroundColor: '#69bdd2',
-            // borderRadius:20,
-            textAlign:'center'
-          },
-
-          headerTintColor: '#fff',
+            backgroundColor: '#f7f3ff',
+            },
+          
           headerTitleStyle: {
             fontWeight: 'bold',
-            // textAlign:'center'
           },
         }}
          />

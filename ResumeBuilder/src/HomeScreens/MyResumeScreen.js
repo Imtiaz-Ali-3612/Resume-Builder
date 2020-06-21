@@ -16,7 +16,7 @@ import {getResumeHeading} from '../Redux/actions/resumeActions';
 import {getResumeEducation} from '../Redux/actions/educationActions';
 import { getResumeExperiance } from '../Redux/actions/experianceActions';
 import { getResumeProject } from '../Redux/actions/projectActions';
-
+import {getResumeOrder} from '../Redux/actions/resumeOrderActions';
 
 class MyResumeScreen extends Component{
     logout=()=>{
@@ -39,10 +39,12 @@ class MyResumeScreen extends Component{
                 this.props.getResumeEducation(token)
                 break;
             case "GenerateResume":
-                this.props.getResumeHeading(token)
-                this.props.getResumeExperiance(token)
-                this.props.getResumeProject(token)
-                this.props.getResumeEducation(token)
+                this.props.getResumeOrder();
+                this.props.getResumeHeading(token);
+                this.props.getResumeExperiance(token);
+                this.props.getResumeProject(token);
+                this.props.getResumeEducation(token);
+                
                 break;
         }
 
@@ -52,11 +54,6 @@ class MyResumeScreen extends Component{
     render(){
         return(
             <View style={styles.main}>
-
-                {/* <TouchableOpacity style={{backgroundColor:'#ff4242'}}
-                onPress={()=>this.logout()}>
-                    
-                </TouchableOpacity> */}
                 <ScrollView >
                   <View style={{flex:1,alignItems:'center'}}>
                         <Image
@@ -116,7 +113,8 @@ const mapStateToProps = state => ({
     removeUserToken: () => dispatch(removeUserToken()),
     getResumeExperiance: (data)=>dispatch(getResumeExperiance(data)),
     getResumeEducation:(data)=>dispatch(getResumeEducation(data)),
-    getResumeProject:(data)=>dispatch(getResumeProject(data))
+    getResumeProject:(data)=>dispatch(getResumeProject(data)),
+    getResumeOrder:(data)=>dispatch(getResumeOrder(data))
     
   });
 const  styles=StyleSheet.create({

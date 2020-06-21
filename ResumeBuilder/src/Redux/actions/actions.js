@@ -108,6 +108,7 @@ export const postLogin =(data)=>dispatch=>{
             console.log(response)
             // var responseJson=JSON.parse(response);
             console.log(response.error)
+            dispatch(loading(true))
             dispatch(setUserToken(response.usertoken))
             if(user.error){
                 dispatch(error(error.message))

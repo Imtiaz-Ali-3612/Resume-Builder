@@ -1,5 +1,5 @@
 import react from "react";
-isValid = (name, text) => {
+isValid = (name, text,state) => {
   var valid = false;
   switch (name) {
     case "email":
@@ -8,9 +8,17 @@ isValid = (name, text) => {
     case "password":
       valid = validatePassword(text);
       return valid;
+    case "confirmPassword":
+      valid = validateConfirmPassword(text,state.password.value)
   }
   return valid;
 };
+validateConfirmPassword= (re_enter,password)=>{
+  if(re_enter==password){
+    return true;
+  }
+  return false;
+}
 validateEmail = email => {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());

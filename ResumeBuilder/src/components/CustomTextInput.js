@@ -5,7 +5,7 @@ CustomTextInput = props => {
     <TextInput
       style={[props.style,styles.textInputStyle]}
       placeholder={props.placeholder}
-      placeholderTextColor="black"
+      // placeholderTextColor="black"
       onChangeText={props.onChangeText}
       secureTextEntry={props.secureTextEntry}
     />
@@ -13,6 +13,7 @@ CustomTextInput = props => {
 };
 const styles=StyleSheet.create({
     textInputStyle:{
+        fontSize:18,
         borderBottomWidth:1,
     }
 })

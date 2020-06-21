@@ -12,9 +12,9 @@ CustomButton = props => {
 };
 const styles=StyleSheet.create({
     buttonStyles:{
-        borderWidth:1,
+        // borderWidth:1,
         borderRadius:40,
-        borderColor:'green'
+        // borderColor:'green'
     }
 })
 export default CustomButton;

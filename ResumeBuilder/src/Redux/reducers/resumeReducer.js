@@ -3,7 +3,7 @@ import { GET_HEADING,SET_HEADING, LOADING, ERROR} from '../actions/actionTypes';
 
 const resumeReducer = (state = {
     heading:{},
-    loading: false,
+    loading: true,
     error: null,
 }, action) => {
     switch (action.type) {

@@ -1,8 +1,12 @@
 import React,{Component} from 'react'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {View,StyleSheet,Text,TextInput} from 'react-native'
+import {View,StyleSheet,Text,TextInput,Picker} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import {connect} from 'react-redux';
+import { setResumeOrder } from '../Redux/actions/resumeOrderActions';
+
 // import Section from './resumeComponents/Section'
 
 Section =(props)=>{
@@ -13,13 +17,17 @@ Section =(props)=>{
                 <Text style={{fontSize:20}}>{props.title}</Text>
             </View>
             <View style={{paddingRight:10}}>
-                <TextInput
-                    style={{fontSize:20}}
-                    keyboardType='numeric'
-                    placeholder={"Enter Postion"}
-                >
+                  <Picker
+                        selectedValue={props.selectedValue}
+                        style={{  width:200 }}
+                        onValueChange={(itemValue, itemIndex) => props.onChangeText(props.title,itemValue)}
+                    >
+                        <Picker.Item label="Education Section" value="Education Section" />
+                        <Picker.Item label="Introduction Section" value="Introduction Section" />
+                        <Picker.Item label="Experiance Section" value="Experiance Section" />
+                        <Picker.Item label="Project Section" value="Project Section" />
+                    </Picker>
                     
-                </TextInput>
             </View>
         </View>
     )
@@ -30,12 +38,41 @@ class SettingsScreen extends Component{
     state={
         order:
         {
-          section:["Education Section","Introduction Section","Experiance Section","Project Section"]
+          section:[1,2,3,4]
+        },
+        setOrder:{},
+        value:{
+            1:"Introduction Section",
+            2:"Education Section",
+            3:"Experiance Section",
+            4:"Project Section"
+
         }
+        // numbers:[]
+
       }
-    onChangeText=(text,value)=>{
-        var sections=thos.state.order.section;
-        sections[value]=text;
+    onChangeText=(index,value)=>{
+        var order=this.state.value;
+        order[index]=value;
+        // var numbers=this.state.numbers;
+        // numbers.append(value)
+        // console.log(value,text)
+        // order[text]=value;
+        // console.log(order)
+        this.setState({value:order})
+        console.log(this.state.value)
+    }
+    onSubmit=()=>{
+        console.log(this.state.value)
+        var val=this.state.value
+        var data=[]
+        for ( i in val){
+            data[i-1]=val[i]
+        }
+        
+        var order={data}
+        console.log(data)
+        this.props.setResumeOrder(data)
     }
     render(){
         return(
@@ -44,17 +81,28 @@ class SettingsScreen extends Component{
                     <Icon name="cogs" size={120} color="#5DADE2"></Icon>
                 </View>
             <View style={styles.main}>
-                
+                <View style={{alignItems:'center'}}>
+                    <Text style={{textAlign:'center',color:'#5DADE2',fontSize:18}}> Change Order </Text>
+                </View>
+
                 {
                         this.state.order.section.map((sec)=>{
                             return(
-                                <View style={{marginTop:10}}>
-                                <Section title={sec} onChangeText={()=>this.onChangeText(text,value)}></Section>
+                                <View
+                                 key={sec}
+                                 style={{marginTop:10}}>
+                                     <Section 
+
+                                        title={sec} 
+                                        selectedValue={this.state.value[sec]} 
+                                        onChangeText={this.onChangeText}
+                                        />
                                 </View>
                             )
                         })
                 }
                 <TouchableOpacity 
+                    onPress={()=>this.onSubmit()}
                     style={{...styles.section,marginTop:10,backgroundColor:'#5DADE2'}}
                 >
                     <Text style={{fontSize:30}}> Change </Text>
@@ -89,4 +137,13 @@ const styles=StyleSheet.create({
 
     }
 })
-export default SettingsScreen;
+const mapStateToProps = state => ({
+    token: state.token,
+  });
+  
+  
+  const mapDispatchToProps = dispatch => ({
+        setResumeOrder: (data)=>dispatch(setResumeOrder(data))
+  });
+
+  export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

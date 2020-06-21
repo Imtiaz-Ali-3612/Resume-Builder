@@ -20,6 +20,7 @@ import { getResumeExperiance} from '../Redux/actions/experianceActions';
 import { getResumeProject} from '../Redux/actions/projectActions';
 import {getResumeHeading } from '../Redux/actions/resumeActions';
 
+
 class GenerateResume extends Component {
 
    state={
@@ -48,22 +49,22 @@ class GenerateResume extends Component {
               <Section heading={heading.heading}></Section>
             )
             break;
-          case "IntroductionSection":
+          case "Introduction Section":
             return(
               <IntroductionSection introduction={heading.heading.introduction}></IntroductionSection>
             )
             break;
-          case "EducationSection":
+          case "Education Section":
             return(
               <EducationSection education={education.education}></EducationSection>
             )
             break;
-          case "ExperianceSection":
+          case "Experiance Section":
             return(
               <ExperianceSection experiance={experiance.experiance}></ExperianceSection>
             )
             break;
-          case "ProjectSection":
+          case "Project Section":
             return(
               <ProjectSection project={project.project}></ProjectSection>
             )
@@ -123,7 +124,7 @@ class GenerateResume extends Component {
       <ScrollView>
         <Heading heading={heading.heading} />
         {
-          this.state.order.section.map((Section)=>{
+          this.props.order.order.map((Section)=>{
             //  var params=
             console.log(Section)
             return (
@@ -151,7 +152,8 @@ const mapStateToProps = state => ({
   heading:state.resume,
   education:state.education,
   experiance:state.experiance,
-  project:state.project
+  project:state.project,
+  order:state.order
 });
 
 
